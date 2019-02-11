@@ -1,17 +1,16 @@
-
 # Home-Setup
 General LINUX/PYTHON Setup Environment
 
 ### System requirements ###
 
 * Python >=3.7.0
-* Pip >=3.7.0
 
--sudo apt install python-pip
+-sudo apt install python3.7
+-sudo apt install python3-pip
 
 ### Virtual ENV ###
 
-* Install virtual env `pip install virtualenv virtualenvwrapper` please read virtalenvwrapper documentation to fully setup virtual env wrapper.
+* Install virtual env `pip install virtualenv virtualenvwrapper` && `pip3 install virtualenv virtualenvwrapper` please read virtalenvwrapper documentation to fully setup virtual env wrapper.
 
 * Create a virtual environment `mkvirtualenv ${env_name} --python=$(which python3.7)`
 
