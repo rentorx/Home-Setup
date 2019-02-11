@@ -1,3 +1,4 @@
+
 # Home-Setup
 General LINUX/PYTHON Setup Environment
 
@@ -5,6 +6,8 @@ General LINUX/PYTHON Setup Environment
 
 * Python >=3.7.0
 * Pip >=3.7.0
+
+-sudo apt install python-pip
 
 ### Virtual ENV ###
 
