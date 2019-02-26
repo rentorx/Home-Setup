@@ -6,8 +6,8 @@ General LINUX/PYTHON Setup Environment
 
 * Python >=3.7.0
 
--sudo apt install python3.7
--sudo apt install python3-pip
+-`sudo apt install python3.7`
+-`sudo apt install python3-pip`
 
 ### Virtual ENV ###
 
@@ -21,11 +21,12 @@ General LINUX/PYTHON Setup Environment
 
 * nginx example for vpnbackend project
 
-    sudo cp /etc/nginx/sites-available/xvpnbackend  /etc/nginx/sites-available/xvpnbackend 
+    ```
+    sudo cp /etc/nginx/sites-available/xvpnbackend  /etc/nginx/sites-available/xvpnbackend
     sudo ln -s /etc/nginx/sites-available/xvpnbackend /etc/nginx/sites-enabled/
     
     sudo nginx -t               #check config file#
-    sudo systemctl restart nginx
+    sudo systemctl restart nginx```
     
     
 
