@@ -17,10 +17,10 @@ General LINUX/PYTHON Setup Environment
 
 * By default the virtual env should be active, for now on when you need to activate the virtual env run `workon ${env_name}`.
 
-### Celery & Redis  ###l
+### Celery & Redis  ###
 
-# Celery task queue to distribute work across threads or machines.
-# Redis service message broker to send and receive messages.
+ Celery task queue to distribute work across threads or machines.
+ Redis service message broker to send and receive messages.
 * Redis 
 
 -sudo apt update
@@ -29,15 +29,15 @@ General LINUX/PYTHON Setup Environment
 sudo vi /etc/redis/redis.conf
 /etc/redis/redis.conf
 . . .
-# If you run Redis from upstart or systemd, Redis can interact with your
-# supervision tree. Options:
-#   supervised no      - no supervision interaction
-#   supervised upstart - signal upstart by putting Redis into SIGSTOP mode
-#   supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET
-#   supervised auto    - detect upstart or systemd method based on
-#                        UPSTART_JOB or NOTIFY_SOCKET environment variables
-# Note: these supervision methods only signal "process is ready."
-#       They do not enable continuous liveness pings back to your supervisor.
+ If you run Redis from upstart or systemd, Redis can interact with your
+ supervision tree. Options:
+   supervised no      - no supervision interaction
+   supervised upstart - signal upstart by putting Redis into SIGSTOP mode
+   supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET
+   supervised auto    - detect upstart or systemd method based on
+                        UPSTART_JOB or NOTIFY_SOCKET environment variables
+ Note: these supervision methods only signal "process is ready."
+       They do not enable continuous liveness pings back to your supervisor.
 supervised systemd
 . . .
 
