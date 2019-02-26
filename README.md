@@ -17,6 +17,18 @@ General LINUX/PYTHON Setup Environment
 
 * By default the virtual env should be active, for now on when you need to activate the virtual env run `workon ${env_name}`.
 
+### nginx  ###
+
+* nginx example for vpnbackend project
+
+    sudo cp /etc/nginx/sites-available/xvpnbackend  /etc/nginx/sites-available/xvpnbackend 
+    sudo ln -s /etc/nginx/sites-available/xvpnbackend /etc/nginx/sites-enabled/
+    
+    sudo nginx -t               #check config file#
+    sudo systemctl restart nginx
+    
+    
+
 ### Celery & Redis  ###
 
  Celery task queue to distribute work across threads or machines.
