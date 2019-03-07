@@ -1,0 +1,59 @@
+
+upstream xvpnbackend{
+    server 127.0.0.1:8000;
+}
+
+server {
+    listen 80;
+    #listen 443 ssl;
+    server_name 35.236.67.148;   
+
+    access_log /home/ingrenetorres/shadow/logs/xvpnbackend/nginx-access.log;
+    error_log  /home/ingrenetorres/shadow/logs/xvpnbackend/nginx-error.log;
+
+    location /static/ {
+        alias /home/ingrenetorres/shadow/xvpnbackend/static/;
+    }
+    location /media/ {
+        alias /home/ingrenetorres/shadow/xvpnbackend/media/;
+    }
+
+    location / {
+        # an HTTP header important enough to have its own Wikipedia entry:
+        #   http://en.wikipedia.org/wiki/X-Forwarded-For
+        #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # enable this if and only if you use HTTPS, this helps Rack set the proper protocol for doing redirects: proxy_set_header X-Forwarded-Proto https; pass the
+        # Host: header from the client right along so redirects can be set properly within the Rack application
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;  
+
+        #proxy_set_header Host $http_host;
+
+        # we don't want nginx trying to do something clever with redirects, we set the Host: header above already.
+        proxy_redirect off;
+
+        # set "proxy_buffering off" *only* for Rainbows! when doing Comet/long-poll stuff.  It's also safe to set if you're using only serving fast clients with
+        # Unicorn + nginx. Otherwise you _want_ nginx to buffer responses to slow clients, really. proxy_buffering off;
+        # Try to serve static files from nginx, no point in making an *application* server like Unicorn/Rainbows! serve static files.
+
+        if (!-f $request_filename) {
+           proxy_pass http://xvpnbackend;
+           break;
+        }
+    }
+
+    # Error pages
+    error_page 500 502 503 504 /500.html;
+
+    location = /500.html {
+        root /home/ingrenetorres/shadow/xvpnbackend/app/templates/;
+    }
+
+    #ssl on;
+    #ssl_certificate         /etc/ssl/locallibrary.crt;
+    #ssl_certificate_key     /etc/ssl/locallibrary.key;
+
+}
