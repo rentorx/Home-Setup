@@ -1,26 +1,67 @@
-" enable syntax highlighting
-syntax enable
+set nocompatible
+filetype off
 
-" show line numbers
-set number
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" set tabs to have 4 spaces
-set ts=4
+Plugin 'gmarik/Vundle.vim'
 
-" indent when moving to the next line while writing code
-set autoindent
+"git interface
+Plugin 'tpope/vim-fugitive'
 
-" expand tabs into spaces
-set expandtab
+"python sytax checker
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/Pydiction'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
 
-" when using the >> or << commands, shift lines by 4 spaces
-set shiftwidth=4
+"Colors!!!
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
 
-" show a visual line under the cursor's current line
-set cursorline
+call vundle#end()
+filetype plugin indent on
 
-" show the matching part of the pair for [] {} and ()
-set showmatch
 
-" enable all Python syntax highlighting features
-let python_highlight_all = 1
+set noswapfile
+set nu
+set foldmethod=indent
+set foldlevel=99
+let python_highlight_all=1
+syntax on
+
+nnoremap <space> za
+
+"------------Start Python PEP 8 stuff----------------
+"
+"" Number of spaces that a pre-existing tab is equal to.
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+
+"spaces for indents
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py set softtabstop=4
+
+" Set the default file encoding to UTF-8:
+set encoding=utf-8
+
+" For full syntax highlighting:
+let python_highlight_all=1
+syntax on
+
+" Keep indentation level from previous line:
+autocmd FileType python set autoindent
+
+" make backspaces more powerfull
+set backspace=indent,eol,start
+
+" "Folding based on indentation:
+autocmd FileType python set foldmethod=indent
+"use space to open folds
+nnoremap <space> za 
+
+"----------Stop python PEP 8 stuff--------------
+
+
+
+
