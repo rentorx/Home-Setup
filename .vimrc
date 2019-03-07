@@ -25,12 +25,6 @@ filetype plugin indent on
 
 set noswapfile
 set nu
-set foldmethod=indent
-set foldlevel=99
-let python_highlight_all=1
-syntax on
-
-nnoremap <space> za
 
 "------------Start Python PEP 8 stuff----------------
 "
@@ -58,7 +52,6 @@ set backspace=indent,eol,start
 " "Folding based on indentation:
 autocmd FileType python set foldmethod=indent
 "use space to open folds
-nnoremap <space> za 
 
 "----------Stop python PEP 8 stuff--------------
 
