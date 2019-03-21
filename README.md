@@ -6,6 +6,7 @@ General LINUX/PYTHON Setup Environment
 
 * Python >=3.7.0
 
+- sudo apt-get update
 -`sudo apt install python3.7`
 -`sudo apt install python3-pip`
 
