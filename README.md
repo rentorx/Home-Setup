@@ -1,6 +1,6 @@
 
 #### Home-Setup
-General LINUX/PYTHON Setup Environment
+General LINUX/PYTHON/TMUX/VIM Setup Environment
 
 ### System requirements ###
 
@@ -17,6 +17,15 @@ General LINUX/PYTHON Setup Environment
 * Create a virtual environment `mkvirtualenv ${env_name} --python=$(which python3.7)`
 
 * By default the virtual env should be active, for now on when you need to activate the virtual env run `workon ${env_name}`.
+
+### VIM PYTHON EDITOR ###
+.vimrc Contains usefull configuration extensions that make vim behave more like a “modern” IDE. The very first thing you need is a good extension manager.
+
+web reference
+https://realpython.com/vim-and-python-a-match-made-in-heaven/
+
+### TMUX ###
+Pretty and Usable - Tmux config to customize and split windows
 
 ### nginx  ###
 
