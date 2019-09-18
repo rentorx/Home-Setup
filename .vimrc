@@ -31,12 +31,12 @@ colorscheme solarized
 "------------Start Python PEP 8 stuff----------------
 "
 au BufNewFile,BufRead *.py,*.sh
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
 " Set the default file encoding to UTF-8:
