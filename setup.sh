@@ -27,6 +27,7 @@ function local {
     #installing pip3 and virtualenv
     sudo apt install python3-pip
     pip3 install virtualenv virtualenvwrapper
+    mkvirtualenv carservice --python=$(which python3)    
 }
 
 function docker_install {
@@ -57,16 +58,39 @@ function docker_install {
     #sudo apt-get install docker-ce=<VERSION>
 }
 
+function postgresql_install {
+
+    sudo apt-get install wget ca-certificates
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+    sudo apt update
+    sudo apt-get install postgresql postgresql-contrib
+}
+
+function docker_compose {
+
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+}
+
 case $env in
+    'db')
+        postgresql_install
+        ;;
     'docker')
         docker_install
+        ;;
+    'compose')
+        docker_compose
         ;;
     'local')
         local
         ;;
     'all')
         local
+        postgresql_install
         docker_install
+        docker_compose
         ;;
     *)
         usage
