@@ -4,7 +4,7 @@ alias CAROLINA='ssh rentorx@carolina'
 
 
 alias vpn='~/shadow/Home-Setup/runtmux.sh xvpn ~/shadow/vpnbackend'
-alias cars='~/shadow/Home-Setup/runtmux.sh carservice ~/shadow/carsbackend'
+alias cars='~/shadow/Home-Setup/runtmux.sh carservice ~/shadow/cars-service'
 
 
 export LS_COLORS=$LS_COLORS:'di=0;35:';

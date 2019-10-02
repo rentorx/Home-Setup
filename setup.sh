@@ -15,7 +15,7 @@ function local {
     cp -v .bash_profile ~ 
     cp -v .tmux.conf ~
     cp -v .vimrc ~
-    . ~/.bash_profile
+    source ~/.bash_profile
 
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     cd ~/.vim/bundle
@@ -73,6 +73,13 @@ function docker_compose {
     sudo chmod +x /usr/local/bin/docker-compose
 }
 
+function docker_machine {
+    base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+    curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+    sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
+    chmod +x /usr/local/bin/docker-machine
+}
+
 case $env in
     'db')
         postgresql_install
@@ -83,6 +90,9 @@ case $env in
     'compose')
         docker_compose
         ;;
+    'machine')
+        docker_machine
+        ;;
     'local')
         local
         ;;
@@ -91,6 +101,7 @@ case $env in
         postgresql_install
         docker_install
         docker_compose
+        docker_machine
         ;;
     *)
         usage
